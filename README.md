@@ -1,7 +1,9 @@
 [Iqbal, Asim, Romesa Khan, and Theofanis Karayannis. "Developing Brain Atlas through Deep Learning." arXiv preprint arXiv:1807.03440 (2018).](https://arxiv.org/abs/1807.03440)
 
-To run SeBRe demo:
-Run the following notebook to reproduce the results of SeBRe results.
+**SeBRe (Segmenting Brain Regions) is a high-throughput toolbox to generate brain atlas through deep learning**
+
+__SeBRe demo__:
+Run the following notebook to reproduce the results of SeBRe.
 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_block_diagram.png)
 
