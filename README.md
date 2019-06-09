@@ -3,6 +3,7 @@ Developing a Brain Atlas through Deep Learning
 To run SeBRe demo:
 Run the following notebook to reproduce the results of SeBRe results.
 
+![alt text](http://url/to/img.png)
 
 To train SeBRe on your (custom) dataset:
 1. Collect brain sections and place each of them in a separate folder with the following naming convention e.g. 
