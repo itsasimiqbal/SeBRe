@@ -3,14 +3,14 @@
 # Developing Brain Atlas through Deep Learning
 #### SeBRe (Segmenting Brain Regions) is a high-throughput Mask R-CNN [[1](https://arxiv.org/abs/1703.06870)]-based toolbox to generate brain atlas through deep learning.
 
-### [Iqbal, Asim, Romesa Khan, and Theofanis Karayannis. "Developing Brain Atlas through Deep Learning." arXiv preprint arXiv:1807.03440 (2018).](https://arxiv.org/abs/1807.03440)
+#### [Iqbal, Asim, Romesa Khan, and Theofanis Karayannis. "Developing Brain Atlas through Deep Learning." arXiv preprint arXiv:1807.03440 (2018).](https://arxiv.org/abs/1807.03440)
 
-— __SeBRe demo__:
+## SeBRe demo:
 Run the following notebook to reproduce the results of SeBRe.
 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_block_diagram.png)
 
-— **To train SeBRe on your (custom) dataset**:
+## To train SeBRe on your (custom) dataset:
 
 __1__. Collect brain sections and place each of them in a separate folder with the following naming convention e.g. 
 
@@ -23,7 +23,7 @@ __4__. Run the following notebook to train the SeBRe DNN on your dataset.
 
 __5__. Run the following notebook to test the SeBRe DNN on your dataset.
 
-# References:
+## References:
 
 [1] https://arxiv.org/abs/1703.06870
 
