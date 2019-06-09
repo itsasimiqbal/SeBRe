@@ -23,5 +23,7 @@ __5__. Run the following notebook to test the SeBRe DNN on your dataset.
 
 
 [1] https://boxy-svg.com/
+
 [2] https://rectlabel.com/
+
 [3] https://inkscape.org/
