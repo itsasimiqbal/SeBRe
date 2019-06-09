@@ -1,4 +1,5 @@
 Developing a Brain Atlas through Deep Learning
+Iqbal, Asim, Romesa Khan, and Theofanis Karayannis. "Developing Brain Atlas through Deep Learning." arXiv preprint arXiv:1807.03440 (2018).
 
 To run SeBRe demo:
 Run the following notebook to reproduce the results of SeBRe results.
