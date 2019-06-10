@@ -37,7 +37,7 @@ __3__. Run the notebook [custom_dataset_create.ipynb](https://github.com/itsasim
 
 __4__. Modify and run the notebook [SeBRe_training.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_training.ipynb) to train the SeBRe DNN on your (custom) dataset.
 
-__5__. Modify and run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to test the SeBRe DNN on your dataset.
+__5__. Modify and run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to test the SeBRe DNN on your (custom) dataset.
 
 ## References:
 
