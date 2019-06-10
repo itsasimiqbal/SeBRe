@@ -34,7 +34,7 @@ Run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/
 
 ## To train SeBRe on your (custom) dataset:
 
-__1__. Collect brain sections and place each of them in a separate folder with the following naming convention e.g. 
+__1__. Collect images of brain regions (or sub-regions) and place each of them in a separate folder with the following naming convention e.g. ```section_img_0.jpg, section_img_1.jpg, ...```
 
 __2__. Draw ground-truth (binary) masks on Regions of Interest (ROIs) e.g. cortex, hippocampus, etc. using a scalar vector graphics (SVG) software such as Boxy SVG [[2](https://boxy-svg.com/)], RectLabel [[3](https://rectlabel.com/)], Inkscape [[4](https://inkscape.org/)], etc. and assign a unique color code to each ROI. In the figure below, mouse brain section is using before (a) and after (d) annotation by human expert. A zoomed-in examples of cortex (b) and hindbrain (c) are shown to precisely match the boundaries of masks with the corresponding ROIs. 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/Supp_figure_1.png)
