@@ -23,7 +23,7 @@ unzip SeBRe_FINAL_WEIGHTS.h5.zip
 ```
 ## SeBRe demo:
 Run the following notebook to reproduce the results of SeBRe.
-![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb)
+#### [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb)
 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_block_diagram.png)
 
