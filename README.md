@@ -39,7 +39,7 @@ __1__. Collect images of brain regions (or sub-regions) and place each of them i
 __2__. Draw ground-truth (binary) masks on Regions of Interest (ROIs) e.g. cortex, hippocampus, etc. using a scalar vector graphics (SVG) software such as Boxy SVG [[2](https://boxy-svg.com/)], RectLabel [[3](https://rectlabel.com/)], Inkscape [[4](https://inkscape.org/)], etc. and assign a unique color code to each ROI. In the figure below, mouse brain section is using before (a) and after (d) annotation by human expert. A zoomed-in examples of cortex (b) and hindbrain (c) are shown to precisely match the boundaries of masks with the corresponding ROIs. 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/Supp_figure_1.png)
 
-__3__. Run the notebook [custom_dataset_create.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/custom_dataset_create.ipynb) to generate the binary (black and white) masks to train SeBRe deep neural network (DNN). The notebook will generate the file names in SeBRe-readable format.
+__3__. Run the notebook [custom_dataset_create.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/custom_dataset_create.ipynb) to generate the binary (black and white) masks to train SeBRe deep neural network (DNN). The notebook will generate the file names in SeBRe-readable format, place them in the brain region corresponding folders e.g. ```section_masks_0/section_masks_0_m_1.png, sections_masks_0_m_2.png, ...```
 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_Masks.png)
 
