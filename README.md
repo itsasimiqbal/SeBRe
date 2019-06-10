@@ -22,8 +22,7 @@ unzip myDATASET.zip
 unzip SeBRe_FINAL_WEIGHTS.h5.zip
 ```
 ## SeBRe demo:
-Run the following notebook to reproduce the results of SeBRe.
-#### [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb)
+Run the following notebook #### [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to reproduce the results in SeBRe's paper. The block diagram of the system is demonstrated below:
 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_block_diagram.png)
 
