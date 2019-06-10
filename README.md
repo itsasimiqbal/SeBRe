@@ -41,6 +41,8 @@ __2__. Draw ground-truth (binary) masks on Regions of Interest (ROIs) e.g. corte
 
 __3__. Run the notebook [custom_dataset_create.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/custom_dataset_create.ipynb) to generate the binary (black and white) masks to train SeBRe deep neural network (DNN). The notebook will generate the file names in SeBRe-readable format.
 
+![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_Masks.png)
+
 __4__. Modify and run the notebook [SeBRe_training.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_training.ipynb) to train the SeBRe DNN on your (custom) dataset.
 
 __5__. Modify and run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to test the SeBRe DNN on your (custom) dataset.
