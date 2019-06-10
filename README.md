@@ -22,9 +22,13 @@ unzip myDATASET.zip
 unzip SeBRe_FINAL_WEIGHTS.h5.zip
 ```
 ## SeBRe demo:
-Run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to reproduce the results in SeBRe's paper. Make sure to install the necessary libraries in your machine before running the code. A step-by-step explanation of feature processing in SeBRe is provided in [SeBRe_feature_processing.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_feature_processing.ipynb) notebook. The block diagram of our system is demonstrated below:
+The block diagram of our system is demonstrated below:
 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_block_diagram.png)
+
+Run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to reproduce the results in SeBRe's paper. Make sure to install the necessary libraries in your machine before running the code. A step-by-step explanation of feature processing in SeBRe is provided in [SeBRe_feature_processing.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_feature_processing.ipynb) notebook.
+
+![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/FP_SeBRe.png)
 
 ## To train SeBRe on your (custom) dataset:
 
