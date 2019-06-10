@@ -14,6 +14,13 @@ git clone https://github.com/itsasimiqbal/SeBRe.git
 ```
 https://drive.google.com/open?id=1g_894zM_mSJGfudzzfnw-ZpN-rQ4qQdz
 ```
+You would need ```DATASETSubmit.zip```, ```myDATASET.zip``` and ```SeBRe_FINAL_WEIGHTS.h5.zip``` to run the code in your machine. If you'd like to use the mouse and human brain atlas datasets used in our paper then also download and unzip ```SeBRe_Datasets.zip```. Once you've downloaded your files then unzip them in your folder by running the following commands:
+
+```
+unzip DATASETSubmit.zip
+unzip myDATASET.zip
+unzip SeBRe_FINAL_WEIGHTS.h5.zip
+```
 ## SeBRe demo:
 Run the following notebook to reproduce the results of SeBRe.
 
