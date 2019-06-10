@@ -29,6 +29,8 @@ The block diagram of our system is demonstrated below:
 Run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to reproduce the results in SeBRe's paper. Make sure to install the necessary libraries in your machine before running the code. A step-by-step explanation of feature processing in SeBRe is provided in [SeBRe_feature_processing.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_feature_processing.ipynb) notebook.
 
 ![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/FP_SeBRe.png)
+![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/FP_SeBRe_1.png)
+![alt text](https://github.com/itsasimiqbal/SeBRe/blob/master/FP_SeBRe_2.png)
 
 ## To train SeBRe on your (custom) dataset:
 
