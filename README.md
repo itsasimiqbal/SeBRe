@@ -5,9 +5,14 @@
 
 #### [Iqbal, Asim, Romesa Khan, and Theofanis Karayannis. "Developing Brain Atlas through Deep Learning." arXiv preprint arXiv:1807.03440 (2018).](https://arxiv.org/abs/1807.03440)
 
-#### Clone the SeBRe repository in your folder:
+# Download:
+#### Clone the SeBRe repository by running the following command in your terminal window:
 ```
 git clone https://github.com/itsasimiqbal/SeBRe.git
+```
+#### Additionally, download the (.zip) files by visiting the following link:
+```
+https://drive.google.com/open?id=1g_894zM_mSJGfudzzfnw-ZpN-rQ4qQdz
 ```
 ## SeBRe demo:
 Run the following notebook to reproduce the results of SeBRe.
