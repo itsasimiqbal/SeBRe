@@ -23,6 +23,13 @@ unzip DATASETSubmit.zip
 unzip myDATASET.zip
 unzip SeBRe_FINAL_WEIGHTS.h5.zip
 ```
+Following are the Python/library versions on which the code is tested to work fine:
+- Python (3.5.2)
+- Tensorflow (1.6.0)
+- Keras (2.1.6)
+- skimage (0.13.0)
+In case of any trouble, please feel free to write your query (its.asimiqbal@gmail.com)!
+
 ## SeBRe demo:
 The block diagram of our system is demonstrated below:
 
