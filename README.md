@@ -28,7 +28,8 @@ Following are the Python/library versions on which the code is tested to work fi
 - Tensorflow (1.6.0)
 - Keras (2.1.6)
 - skimage (0.13.0)
-In case of any trouble, please feel free to write your query (its.asimiqbal@gmail.com)!
+- Numpy (1.13.3)
+In case of any trouble, please feel free to write your query (its.asimiqbal@gmail.com).
 
 ## SeBRe demo:
 The block diagram of our system is demonstrated below:
