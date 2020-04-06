@@ -29,7 +29,7 @@ Following are the Python/library versions on which the code is tested to work fi
 - Keras (2.1.6)
 - skimage (0.13.0)
 - Numpy (1.13.3)
-In case of any trouble, please feel free to write your query (its.asimiqbal@gmail.com).
+- Scipy (1.2.2)
 
 ## SeBRe demo:
 The block diagram of our system is demonstrated below:
