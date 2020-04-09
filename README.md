@@ -1,6 +1,6 @@
 
 
-# Developing Brain Atlas through Deep Learning
+# Developing a Brain Atlas through Deep Learning
 #### SeBRe (Segmenting Brain Regions) is a high-throughput Mask R-CNN [[1](https://arxiv.org/abs/1703.06870)]-based toolbox to generate brain atlas through deep learning.
 
 #### [Iqbal, A., Khan, R. and Karayannis, T., 2019. Developing a brain atlas through deep learning. Nature Machine Intelligence, 1(6), p.277.](https://rdcu.be/bGefW)
