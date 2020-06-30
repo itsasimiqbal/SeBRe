@@ -71,6 +71,6 @@ __5__. Modify and run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasi
 If you use any part of this code for your work, please cite the following:
 
 ```
-Iqbal, Asim, Romesa Khan, and Theofanis Karayannis. "Developing a brain atlas through deep learning." 
+Asim Iqbal, Romesa Khan, and Theofanis Karayannis. "Developing a brain atlas through deep learning." 
 Nature Machine Intelligence 1.6 (2019): 277-287.
 ```
