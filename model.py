@@ -290,9 +290,10 @@ class ProposalLayer(KE.Layer):
 
         # Non-max suppression
         def nms(normalized_boxes, scores):
-            indices = tf.image.non_max_suppression(
-                normalized_boxes, scores, self.proposal_count,
-                self.nms_threshold, name="rpn_non_max_suppression")
+            indices, scores = tf.image.non_max_suppression_with_scores(
+                normalized_boxes, scores, max_output_size=self.config.DETECTION_MAX_INSTANCES,
+                iou_threshold=self.config.DETECTION_NMS_THRESHOLD, score_threshold=self.config.DETECTION_MIN_CONFIDENCE, 
+                soft_nms_sigma=0.5, name="rpn_non_max_suppression")
             proposals = tf.gather(normalized_boxes, indices)
             # Pad if needed
             padding = tf.maximum(self.proposal_count - tf.shape(proposals)[0], 0)
@@ -720,11 +721,11 @@ def refine_detections_graph(rois, probs, deltas, window, config):
         # Indices of ROIs of the given class
         ixs = tf.where(tf.equal(pre_nms_class_ids, class_id))[:, 0]
         # Apply NMS
-        class_keep = tf.image.non_max_suppression(
-                tf.to_float(tf.gather(pre_nms_rois, ixs)),
-                tf.gather(pre_nms_scores, ixs),
+        class_keep, scores = tf.image.non_max_suppression_with_scores(
+                 tf.to_float(tf.gather(pre_nms_rois, ixs)), tf.gather(pre_nms_scores, ixs),
                 max_output_size=config.DETECTION_MAX_INSTANCES,
-                iou_threshold=config.DETECTION_NMS_THRESHOLD)
+                iou_threshold=config.DETECTION_NMS_THRESHOLD, score_threshold=config.DETECTION_MIN_CONFIDENCE, 
+                soft_nms_sigma=0.5, name="rpn_non_max_suppression")
         # Map indicies
         class_keep = tf.gather(keep, tf.gather(ixs, class_keep))
         # Pad with -1 so returned tensors have the same shape
@@ -2010,7 +2011,7 @@ class MaskRCNN():
         exlude: list of layer names to excluce
         """
         import h5py
-        from keras.engine import topology
+        from keras.engine import saving
 
         if exclude:
             by_name = True
@@ -2032,9 +2033,9 @@ class MaskRCNN():
             layers = filter(lambda l: l.name not in exclude, layers)
 
         if by_name:
-            topology.load_weights_from_hdf5_group_by_name(f, layers)
+            saving.load_weights_from_hdf5_group_by_name(f, layers)
         else:
-            topology.load_weights_from_hdf5_group(f, layers)
+            saving.load_weights_from_hdf5_group(f, layers)
         if hasattr(f, 'close'):
             f.close()
 
@@ -2092,7 +2093,7 @@ class MaskRCNN():
                 continue
             layer = self.keras_model.get_layer(name)
             self.keras_model.metrics_names.append(name)
-            self.keras_model.metrics_tensors.append(tf.reduce_mean(
+            self.keras_model.metrics.append(tf.reduce_mean(
                 layer.output, keep_dims=True))
 
     def set_trainable(self, layer_regex, keras_model=None, indent=0, verbose=1):

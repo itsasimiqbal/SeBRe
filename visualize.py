@@ -55,13 +55,11 @@ def display_images(images, titles=None, cols=4, cmap=None, norm=None,
         plt.subplot(rows, cols, i)
         plt.title(title, fontsize=25)
         plt.axis('off')
-#        plt.imshow(image.astype(np.uint8), cmap=cmap,
-#                   norm=norm, interpolation=interpolation)
         plt.imshow(image, cmap=cmap,
                    norm=norm, interpolation=interpolation)
 
         i += 1
-#    plt.show()
+    plt.show()
 
     
 
@@ -75,7 +73,6 @@ def random_colors(N, bright=True):
     hsv = [(i / N, 1, brightness) for i in range(N)]
     colors = list(map(lambda c: colorsys.hsv_to_rgb(*c), hsv))
     random.shuffle(colors)
-#    print(colors)
     return colors
 
 
@@ -92,7 +89,7 @@ def apply_mask(image, mask, color, alpha=0.5):
 
 def display_instances(image, boxes, masks, class_ids, class_names,
                       scores=None, title="",
-                      figsize=(40, 40), ax=None):
+                      figsize=(40, 40), ax=None, colors=[]):
     """
     boxes: [num_instance, (y1, x1, y2, x2, class_id)] in image coordinates.
     masks: [height, width, num_instances]
@@ -106,37 +103,11 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     if not N:
         print("\n*** No instances to display *** \n")
     else:
-        assert boxes.shape[0] == masks.shape[-1] == class_ids.shape[0]
+        assert boxes.shape[0] == masks.shape[-1]
 
     if not ax:
         _, ax = plt.subplots(1, figsize=figsize)
-
-    # Generate random colors
-#        colors = random_colors(N)
-#        print(colors)
-   
-    # Generate colors corresponding to Allen P14 reference atlas: 
-    colors = []
-    for cls in class_ids:
-        if cls ==1:
-            colors.append(tuple((242/255, 25/255, 60/255)))# cortex
-        if cls ==2:
-            colors.append(tuple((255/255, 72/255, 101/255)))#mpall
-        if cls ==3:
-            colors.append(tuple((229/255, 135/255, 36/255)))#cspall
-        if cls ==4:
-            colors.append(tuple((255/255, 237/255, 100/255)))#thalamus
-        if cls ==5:
-            colors.append(tuple((255/255, 244/255, 164/255)))#prethalamus
-        if cls ==6:
-            colors.append(tuple((23/255, 179/255, 23/255)))#midbrain
-        if cls ==7:
-            colors.append(tuple((238/255, 93/255, 255/255)))#hindbrain
-        if cls ==8:
-            colors.append(tuple((237/255, 152/255, 92/255)))#telA
-    #print(colors)
-            
-
+  
     # Show area outside image boundaries.
     height, width = image.shape[:2]
     ax.set_ylim(height + 10, -10)
@@ -145,13 +116,24 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     ax.set_title(title)
 
     masked_image = image.astype(np.uint32).copy()
-    for i in range(N):
-        color = colors[i]
+    for i in range(0, len(class_ids)):
+        if i not in class_ids:
+            continue
+        try:
+            color = colors[i]
+        except IndexError:
+            print("Failed to get color for class id " + str(i))
+            continue
 
         # Bounding box
-        if not np.any(boxes[i]):
-            # Skip this instance. Has no bbox. Likely lost in image cropping.
-            continue
+#         try:
+#             if not np.any(boxes[i]):
+#                 # Skip this instance. Has no bbox. Likely lost in image cropping.
+#                 continue
+#         except IndexError:
+#             print("Skipped " + str(i) + " because no bbox found.")
+#             continue
+            
         y1, x1, y2, x2 = boxes[i]
         p = patches.Rectangle((x1, y1), x2 - x1, y2 - y1, linewidth=2,
                               alpha=0.7, linestyle="dashed",
@@ -159,13 +141,13 @@ def display_instances(image, boxes, masks, class_ids, class_names,
         ax.add_patch(p)
 
         # Label
-        class_id = class_ids[i]
+        class_id = i+1 # offset by 1 to account for background channel.
         score = scores[i] if scores is not None else None
         label = class_names[class_id]
         x = random.randint(x1, (x1 + x2) // 2)
         caption = "{} {:.3f}".format(label, score) if score else label
         ax.text(x1, y2, caption, #x1,y1+8
-                color='k', size=25, backgroundcolor="none")#color='k',size = 15
+                color='#FFFFFF', size=25, backgroundcolor="none")#color='k',size = 15
 
         # Mask
         mask = masks[:, :, i]
@@ -277,10 +259,12 @@ def display_top_masks(image, mask, class_ids, class_names, limit= None): #limit=
 #    titles.append("H x W={}x{}".format(image.shape[0], image.shape[1]))
     # Pick top prominent classes in this image
     unique_class_ids = np.unique(class_ids)
-    mask_area = [np.sum(mask[:, :, np.where(class_ids == i)[0]])
-                 for i in unique_class_ids]
+    mask_area = [np.sum(mask[:, :,i])
+                 for i in range(0, len(unique_class_ids))]
+
     top_ids = [v[0] for v in sorted(zip(unique_class_ids, mask_area),
                                     key=lambda r: r[1], reverse=True) if v[1] > 0]
+    
     # Generate images and titles
     for i in range(limit):
         class_id = top_ids[i] if i < len(top_ids) else -1
@@ -289,7 +273,7 @@ def display_top_masks(image, mask, class_ids, class_names, limit= None): #limit=
         m = np.sum(m * np.arange(1, m.shape[-1] + 1), -1)
         to_display.append(m)
         titles.append(class_names[class_id] if class_id != -1 else "-")
-    display_images(to_display, titles=None, cols=limit + 1, cmap=None) #titles=titles,cmap="Blues_r"
+    display_images(to_display, titles=titles, cols=limit + 1, cmap=None) #titles=titles,cmap="Blues_r"
 
 
 def plot_precision_recall(AP, precisions, recalls):
