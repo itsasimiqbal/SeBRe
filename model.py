@@ -291,9 +291,15 @@ class ProposalLayer(KE.Layer):
         # Non-max suppression
         def nms(normalized_boxes, scores):
             indices, scores = tf.image.non_max_suppression_with_scores(
-                normalized_boxes, scores, max_output_size=self.config.DETECTION_MAX_INSTANCES,
-                iou_threshold=self.config.DETECTION_NMS_THRESHOLD, score_threshold=self.config.DETECTION_MIN_CONFIDENCE, 
-                soft_nms_sigma=0.5, name="rpn_non_max_suppression")
+                     normalized_boxes,
+                     scores,
+                    max_output_size=100,
+                    iou_threshold=self.nms_threshold,
+                    score_threshold=0.1,
+                    soft_nms_sigma=0.5)
+#             indices = tf.image.non_max_suppression(
+#                 normalized_boxes, scores, self.proposal_count,
+#                 self.nms_threshold, name="rpn_non_max_suppression")
             proposals = tf.gather(normalized_boxes, indices)
             # Pad if needed
             padding = tf.maximum(self.proposal_count - tf.shape(proposals)[0], 0)
@@ -722,10 +728,17 @@ def refine_detections_graph(rois, probs, deltas, window, config):
         ixs = tf.where(tf.equal(pre_nms_class_ids, class_id))[:, 0]
         # Apply NMS
         class_keep, scores = tf.image.non_max_suppression_with_scores(
-                 tf.to_float(tf.gather(pre_nms_rois, ixs)), tf.gather(pre_nms_scores, ixs),
-                max_output_size=config.DETECTION_MAX_INSTANCES,
-                iou_threshold=config.DETECTION_NMS_THRESHOLD, score_threshold=config.DETECTION_MIN_CONFIDENCE, 
-                soft_nms_sigma=0.5, name="rpn_non_max_suppression")
+                     tf.to_float(tf.gather(pre_nms_rois, ixs)),
+                     tf.gather(pre_nms_scores, ixs),
+                    max_output_size=config.DETECTION_MAX_INSTANCES,
+                    iou_threshold=config.DETECTION_NMS_THRESHOLD,
+                    score_threshold=0.1,
+                    soft_nms_sigma=0.5)
+#         class_keep = tf.image.non_max_suppression(
+#                 tf.to_float(tf.gather(pre_nms_rois, ixs)),
+#                 tf.gather(pre_nms_scores, ixs),
+#                 max_output_size=config.DETECTION_MAX_INSTANCES,
+#                 iou_threshold=config.DETECTION_NMS_THRESHOLD)
         # Map indicies
         class_keep = tf.gather(keep, tf.gather(ixs, class_keep))
         # Pad with -1 so returned tensors have the same shape
@@ -2088,13 +2101,13 @@ class MaskRCNN():
                                  None] * len(self.keras_model.outputs))
 
         # Add metrics for losses
-        for name in loss_names:
-            if name in self.keras_model.metrics_names:
-                continue
-            layer = self.keras_model.get_layer(name)
-            self.keras_model.metrics_names.append(name)
-            self.keras_model.metrics.append(tf.reduce_mean(
-                layer.output, keep_dims=True))
+#         for name in loss_names:
+# #             if name in self.keras_model.metrics_names:
+# #                 continue
+#             layer = self.keras_model.get_layer(name)
+# #             self.keras_model.metrics_names.append(name)
+#             self.keras_model.add_metric(tf.reduce_mean(
+#                 layer.output, keep_dims=True), name)
 
     def set_trainable(self, layer_regex, keras_model=None, indent=0, verbose=1):
         """Sets model layers as trainable if their names match
