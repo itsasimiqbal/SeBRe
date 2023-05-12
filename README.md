@@ -57,6 +57,12 @@ __4__. Modify and run the notebook [SeBRe_training.ipynb](https://github.com/its
 
 __5__. Modify and run the notebook [SeBRe_FINAL.ipynb](https://github.com/itsasimiqbal/SeBRe/blob/master/SeBRe_FINAL.ipynb) to test the SeBRe DNN on your (custom) dataset.
 
+## Sahni Lab Data:
+This data was used to train models on brainstem images. Optimizations made to the model and to the data are reflected in this repository and the following datasets.
+
+[1] [Training Data v1](https://drive.google.com/drive/folders/1zChrCERZjf-MvDK-nhNs_lEI5WlSkKh1?usp=share_link)
+[2] [Training Data v2 (optimized for medulla)](https://drive.google.com/drive/folders/1oDAH5UlplUD08RXswktuuBsDD-vMXfAq?usp=share_link)
+
 ## References:
 
 [1] https://arxiv.org/abs/1703.06870
