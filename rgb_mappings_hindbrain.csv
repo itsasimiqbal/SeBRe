@@ -1,0 +1,13 @@
+Sub-region,Label,R,G,B
+"Pons, motor related",PG,200,100,0
+vary G value,TRN,200,100,20
+,V,200,100,40
+,,,,
+"Pons, behavioral related",CS,220,120,20
+vary B value,PRN,220,120,40
+,LC,220,140,0
+,,,,
+"Pons, sensory related",PB,220,140,20
+vary R value,SOC,220,140,40
+,NLL,220,140,60
+,PSV,220,160,0
