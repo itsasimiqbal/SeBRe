@@ -1,0 +1,32 @@
+Sub-region,Label,R,G,B
+"Medulla, sensory related",CN,220,0,120
+vary R value,SPV,220,0,140
+,CU,220,0,160
+,NTB,220,0,180
+,ECU,220,0,200
+,,,,
+"Medulla, motor related",XII,220,20,120
+vary G value,AP,220,20,140
+minimum 135,VNC,220,20,160
+,NTS,220,20,180
+,VII,220,20,200
+,MARN,220,40,120
+,AMB,220,40,140
+,IO,220,40,160
+,GRN,220,40,180
+,IRN,220,40,200
+,PARN,220,60,120
+,PGRNd,220,60,200
+,PGRNl,220,80,120
+,PRP,220,80,140
+,SPIV,220,80,160
+,VI,220,80,180
+,MDRNv,220,80,200
+,MDRNd,220,100,120
+,GR,220,100,140
+,,,,
+Other motor related,LRNm,220,100,180
+vary B value,,,,
+,,,,
+"Medulla, behavioral related",RM,240,0,180
+,RO,240,0,200

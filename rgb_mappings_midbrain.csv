@@ -1,0 +1,13 @@
+Sub-region,Label,R,G,B
+Midbrain,SC,100,0,180
+"Midbrain, sensory related",IC,100,0,200
+vary R value,,,,
+,,,,
+"Midbrain, motor related",PAG,100,20,180
+vary G value,III,100,20,200
+,MRN,100,20,220
+,SN,100,20,240
+,RN,100,40,180
+,,,,
+"Midbrain, behavioral related",DR,100,40,240
+vary B value,VTA,100,60,180

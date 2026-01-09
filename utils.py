@@ -187,8 +187,8 @@ def box_refinement_graph(box, gt_box):
 
     dy = (gt_center_y - center_y) / height
     dx = (gt_center_x - center_x) / width
-    dh = tf.log(gt_height / height)
-    dw = tf.log(gt_width / width)
+    dh = tf.math.log(gt_height / height)
+    dw = tf.math.log(gt_width / width)
 
     result = tf.stack([dy, dx, dh, dw], axis=1)
     return result
@@ -454,11 +454,15 @@ def minimize_mask(bbox, mask, mini_shape):
     for i in range(mask.shape[-1]):
         m = mask[:, :, i]
         y1, x1, y2, x2 = bbox[i][:4]
-        m = m[y1:y2, x1:x2]
-        if m.size == 0:
-            raise Exception("Invalid bounding box with area of zero")
-        m = scipy.misc.imresize(m.astype(float), mini_shape, interp='bilinear')
-        mini_mask[:, :, i] = np.where(m >= 128, 1, 0)
+        
+        # Skip minimize mask if they don't exist on this image, ie. bbox is empty for the class region
+        if (np.sum(bbox[i][:4])) > 0:
+            m = m[y1:y2, x1:x2]
+            if m.size == 0:
+                raise Exception("Invalid bounding box with area of zero")
+            m = scipy.misc.imresize(m.astype(float), mini_shape, interp='bilinear')
+            mini_mask[:, :, i] = np.where(m >= 128, 1, 0)
+            
     return mini_mask
 
 
